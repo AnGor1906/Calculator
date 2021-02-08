@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Document</title>
+</head>
+<style>
+    .body {
+        user-select: none;
+    }
+    
+    .calculator {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        width: 30%;
+        background-color: rgb(174, 236, 212);
+        padding: 0px 0px 20px 50px;
+        border-radius: 10px;
+    }
+    
+    #out {
+        width: 100%;
+        border-radius: 10px;
+    }
+    
+    .forbuttons {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        border-radius: 10px;
+    }
+    
+    button {
+        width: 25%;
+        padding: 15px 5px;
+        background-color: rgb(33, 136, 110);
+        border-radius: 5px;
+    }
+    
+    #textview {
+        width: 335px;
+        padding: 20px 5px;
+        border-radius: 10px;
+    }
+    
+    #ravno {
+        width: 50%;
+    }
+</style>
+
+<body>
+    <div class="calculator">
+        <p class="item_input" id="out">
+            <form name="form"><input type="text" id="textview" name="textview" readonly></form>
+        </p>
+        <div class="forbuttons">
+            <button onclick="insert('7')">7</button>
+            <button onclick="insert('8')">8</button>
+            <button onclick="insert('9')">9</button>
+            <button onclick="insert('+')">+</button>
+            <button onclick="insert( '4') ">4</button>
+            <button onclick="insert( '5') ">5</button>
+            <button onclick="insert( '6') ">6</button>
+            <button onclick="insert('-')">-</button>
+            <button onclick="insert( '1') ">1</button>
+            <button onclick="insert( '2') ">2</button>
+            <button onclick="insert( '3') ">3</button>
+            <button onclick="insert('*')">&times;</button>
+            <button onclick="insert( '0') ">0</button>
+            <button onclick="ravno() ">=</button>
+            <button onclick="insert('/')">&divide;</button>
+            <button onclick="back()">&larr;</button>
+
+        </div>
+
+    </div>
+
+    <script>
+        function insert(a) {
+            document.form.textview.value = document.form.textview.value + a;
+        }
+
+        function ravno() {
+            let expression = document.form.textview.value;
+            if (expression) {
+                document.form.textview.value = eval(expression);
+            }
+        }
+
+        function back() {
+            let expression = document.form.textview.value;
+            document.form.textview.value = expression.substring(0, expression.length - 1);
+        }
+    </script>
+</body>
+
+</html>
